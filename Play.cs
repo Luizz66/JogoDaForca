@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace JogoDaForca
 {
-    internal class Program
+    internal class Play
     {
         public static void ColorirLinha(string text, ConsoleColor color)
         {
@@ -87,6 +87,7 @@ namespace JogoDaForca
                     chutes.Add(entrada);
                     Console.Clear();
                     tentativas--;
+                    if (chutes.Contains(entrada)) { continue; }
                 }
             }
             if (tentativas == 0)
