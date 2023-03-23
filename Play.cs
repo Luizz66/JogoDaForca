@@ -50,6 +50,7 @@ namespace JogoDaForca
             string palavraSeled = new string('_', palavra.Length);
 
             List<char> chutes = new List<char>();
+            string boneco = $"| -----\n|    | \n|    O \n|   /|\\ \n|    | \n|   / \\ \n_      ";
 
             while (tentativas > 0 && palavraSeled.Contains("_"))
             {
@@ -57,13 +58,20 @@ namespace JogoDaForca
                 Console.WriteLine("Desafie-se tentando descobrir qual é a palavra oculta em até 6 tentativas.\n", ConsoleColor.DarkGreen);
                 ColorirLinha("Tema: PROFISSÃO\n\n\n", ConsoleColor.DarkYellow);
                 ColorirLinha($"Tentativas Restantes: {tentativas}\n\n", ConsoleColor.DarkGreen);
-                Console.WriteLine($"|----- ");
-                Console.WriteLine($"|    | ");
-                Console.WriteLine($"|    {(tentativas <= 5 ? "O" : " ")} ");
-                Console.WriteLine($"|   {(tentativas <= 3 ? "/" : " ")}{(tentativas <= 4 ? "|" : " ")}{(tentativas <= 2 ? "\\" : " ")} ");
-                Console.WriteLine($"|    {(tentativas <= 4 ? "|" : " ")} ");
-                Console.WriteLine($"|   {(tentativas <= 1 ? "/" : " ")} {(tentativas == 0 ? "\\" : " ")} ");
-                Console.WriteLine($"_      \n\n");
+                Console.WriteLine($"| -----\n" +
+                    $"|    | \n" +
+                    $"|    " +
+                    $"{(tentativas <= 5 ? "O" : " ")} \n" +
+                    $"|   " +
+                    $"{(tentativas <= 3 ? "/" : " ")}" +
+                    $"{(tentativas <= 4 ? "|" : " ")}" +
+                    $"{(tentativas <= 2 ? "\\" : " ")} \n" +
+                    $"|    " +
+                    $"{(tentativas <= 4 ? "|" : " ")} \n" +
+                    $"|   " +
+                    $"{(tentativas <= 1 ? "/" : " ")} " +
+                    $"{(tentativas == 0 ? "\\" : " ")} \n" +
+                    $"_      ");
                 Console.WriteLine(palavraSeled);
                 ColorirLinha($"\n\nChutes Errados: {string.Join(", ", chutes)}", ConsoleColor.Red);
 
@@ -92,13 +100,7 @@ namespace JogoDaForca
             }
             if (tentativas == 0)
             {
-                Console.WriteLine($"|----- ");
-                Console.WriteLine($"|    | ");
-                Console.WriteLine($"|    {(tentativas <= 5 ? "O" : " ")} ");
-                Console.WriteLine($"|   {(tentativas <= 3 ? "/" : " ")}{(tentativas <= 4 ? "|" : " ")}{(tentativas <= 2 ? "\\" : " ")} ");
-                Console.WriteLine($"|    {(tentativas <= 4 ? "|" : " ")} ");
-                Console.WriteLine($"|   {(tentativas <= 1 ? "/" : " ")} {(tentativas == 0 ? "\\" : " ")} ");
-                Console.WriteLine($"_      \n\n");
+                Console.WriteLine(boneco);
                 ColorirLinha($"\nVOCÊ PERDEU, A PALAVRA É: {palavra} \n\n", ConsoleColor.DarkRed);
             }
             else { ColorirLinha($"\nPARABÉNS, VOCÊ ACERTOU, A PALAVRA É: {palavra} \n\n", ConsoleColor.Green); }
