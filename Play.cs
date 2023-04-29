@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using static Colorir.Color;
 using System.Linq;
 
 namespace JogoDaForca
 {
     internal class Play
     {
-        public static void ColorirLinha(string text, ConsoleColor color)
-        {
-            Console.ForegroundColor = color;
-            Console.Write(text);
-            Console.ResetColor();
-        }
         static void Main()
         {
             int tentativas = 6;
@@ -54,10 +49,10 @@ namespace JogoDaForca
 
             while (tentativas > 0 && palavraSeled.Contains("_"))
             {
-                ColorirLinha("_____________________JOGO__DA__FORCA______________________\n\n\n", ConsoleColor.White);
+                ColorLine("_____________________JOGO__DA__FORCA______________________\n\n\n", ConsoleColor.White);
                 Console.WriteLine("Desafie-se tentando descobrir qual é a palavra oculta em até 6 tentativas.\n", ConsoleColor.DarkGreen);
-                ColorirLinha("Tema: PROFISSÃO\n\n\n", ConsoleColor.DarkYellow);
-                ColorirLinha($"Tentativas Restantes: {tentativas}\n\n", ConsoleColor.DarkGreen);
+                ColorLine("Tema: PROFISSÃO\n\n\n", ConsoleColor.DarkYellow);
+                ColorLine($"Tentativas Restantes: {tentativas}\n\n", ConsoleColor.DarkGreen);
                 Console.WriteLine($"| -----\n" +
                     $"|    | \n" +
                     $"|    " +
@@ -73,7 +68,7 @@ namespace JogoDaForca
                     $"{(tentativas == 0 ? "\\" : " ")} \n" +
                     $"_      ");
                 Console.WriteLine(palavraSeled);
-                ColorirLinha($"\n\nChutes Errados: {string.Join(", ", chutes)}", ConsoleColor.Red);
+                ColorLine($"\n\nChutes Errados: {string.Join(", ", chutes)}", ConsoleColor.Red);
 
                 char entrada = Console.ReadKey().KeyChar.ToString().ToLower()[0];
 
@@ -101,9 +96,9 @@ namespace JogoDaForca
             if (tentativas == 0)
             {
                 Console.WriteLine(boneco);
-                ColorirLinha($"\nVOCÊ PERDEU, A PALAVRA É: {palavra} \n\n", ConsoleColor.DarkRed);
+                ColorLine($"\nVOCÊ PERDEU, A PALAVRA É: {palavra} \n\n", ConsoleColor.DarkRed);
             }
-            else { ColorirLinha($"\nPARABÉNS, VOCÊ ACERTOU, A PALAVRA É: {palavra} \n\n", ConsoleColor.Green); }
+            else { ColorLine($"\nPARABÉNS, VOCÊ ACERTOU, A PALAVRA É: {palavra} \n\n", ConsoleColor.Green); }
 
 
 
