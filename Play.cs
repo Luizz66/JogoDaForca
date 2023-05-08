@@ -13,30 +13,30 @@ namespace JogoDaForca
 
             var profissões = new List<string>
             {
-                "enfermagem",
-                "fisioterapia",
-                "medicina",
-                "nutriçao",
-                "odontologia",
-                "radiologia",
-                "biologia",
-                "astronomia",
-                "fisica",
-                "geologia",
-                "quimica",
-                "engenharia",
-                "antropologia",
-                "psicologia",
-                "administraçao",
-                "arquitetura",
-                "jornalismo",
-                "pedagogia",
-                "design",
-                "meteorologia",
-                "economia",
-                "direito",
-                "marketing",
-                "biomedicina",
+                "Enfermagem",
+                "Fisioterapia",
+                "Medicina",
+                "Nutrição",
+                "Odontologia",
+                "Radiologia",
+                "Biologia",
+                "Astronomia",
+                "Física",
+                "Geologia",
+                "Química",
+                "Engenharia",
+                "Antropologia",
+                "Psicologia",
+                "Administração",
+                "Arquitetura",
+                "Jornalismo",
+                "Pedagogia",
+                "Design",
+                "Meteorologia",
+                "Economia",
+                "Direito",
+                "Marketing",
+                "Biomedicina",
 
             };
             var países = new List<string>
@@ -166,7 +166,7 @@ namespace JogoDaForca
             {
                 string _ = new string('_', 30);
                 ColorBack($"{_}JOGO__DA__FORCA{_}\n\n\n", ConsoleColor.DarkBlue);
-                Console.WriteLine("Desafie-se tentando descobrir qual é a palavra oculta em até 6 tentativas (Não considere acentos).\n");
+                Console.WriteLine($"Desafie-se tentando descobrir qual é a palavra oculta em até 6 tentativas (NÃO CONSIDERE ACENTOS).\n\n");
                 ColorLine($"Tema: {temaSorteado}\n\n\n", ConsoleColor.DarkYellow);
                 ColorLine($"Tentativas Restantes: {tentativas}\n\n", ConsoleColor.DarkGreen);
                 Console.WriteLine($"| -----\n" +
