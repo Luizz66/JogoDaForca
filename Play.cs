@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using static Colorir.Color;
-using System.Linq;
+using static Ferramentas.Remove;
 
 namespace JogoDaForca
 {
@@ -10,7 +10,8 @@ namespace JogoDaForca
         static void Main()
         {
             int tentativas = 6;
-            var strings = new List<string>
+
+            var profissões = new List<string>
             {
                 "enfermagem",
                 "fisioterapia",
@@ -38,10 +39,124 @@ namespace JogoDaForca
                 "biomedicina",
 
             };
+            var países = new List<string>
+            {
+                "Brasil",
+                "México",
+                "Argentina",
+                "Uruguai",
+                "Chile",
+                "Alemanha",
+                "Inglaterra",
+                "Itália",
+                "Grécia",
+                "Irlanda",
+                "Espanha",
+                "França",
+                "Nigéria",
+                "Egito",
+                "Senegal",
+                "Angola",
+                "Marrocos",
+                "Gana",
+                "China",
+                "Japão",
+                "Índia",
+                "Indonésia",
+                "Coreia do Sul",
+                "Estados Unidos",
+                "Canadá",
+                "Austrália",
+
+
+            };
+            var animais = new List<string>
+            {
+                "Macaco",
+                "Leão",
+                "Tigre",
+                "Elefante",
+                "Girafa",
+                "Jacaré",
+                "Canguru",
+                "Pinguim",
+                "Orangotango",
+                "Tubarão",
+                "Urso",
+                "Zebra",
+                "Crocodilo",
+                "Rinoceronte",
+                "Guepardo",
+                "Tartaruga",
+                "Gorila",
+                "Cobra",
+                "Morcego",
+                "Lobo",
+                "Baleia",
+                "Gato",
+                "Caranguejo",
+                "Peixe",
+                "Cervo",
+            };
+            var frutas = new List<string>
+            {
+                "Abacaxi",
+                "Banana",
+                "Caju",
+                "Cereja",
+                "Coco",
+                "Caqui",
+                "Framboesa",
+                "Goiaba",
+                "Kiwi",
+                "Laranja",
+                "Limão",
+                "Manga",
+                "Melância",
+                "Melão",
+                "Morango",
+                "Pera",
+                "Pêssego",
+                "Pitanga",
+                "Tangerina",
+                "Uva",
+                "Abacate",
+                "Ameixa",
+                "Graviola",
+                "Maracujá",
+                "Acerola",
+                "Mamão",
+            };
+
             Random random = new Random();
 
-            int indice = random.Next(strings.Count);
-            string palavra = strings[indice];
+            List<string> tema;
+            string temaSorteado;
+
+            int indiceTema = random.Next(4); //de 0 a 3
+            if (indiceTema == 0)
+            {
+                tema = profissões;
+                temaSorteado = "PROFISSÃO";
+            }
+            else if (indiceTema == 1)
+            {
+                tema = países;
+                temaSorteado = "PAÍS";
+            }
+            else if (indiceTema == 2)
+            {
+                tema = animais;
+                temaSorteado = "ANIMAL";
+            }
+            else
+            {
+                tema = frutas;
+                temaSorteado = "FRUTA";
+            }
+
+            int indiceList = random.Next(tema.Count);
+            string palavra = tema[indiceList];
             string palavraSeled = new string('_', palavra.Length);
 
             List<char> chutes = new List<char>();
@@ -49,9 +164,10 @@ namespace JogoDaForca
 
             while (tentativas > 0 && palavraSeled.Contains("_"))
             {
-                ColorLine("_____________________JOGO__DA__FORCA______________________\n\n\n", ConsoleColor.White);
-                Console.WriteLine("Desafie-se tentando descobrir qual é a palavra oculta em até 6 tentativas.\n", ConsoleColor.DarkGreen);
-                ColorLine("Tema: PROFISSÃO\n\n\n", ConsoleColor.DarkYellow);
+                string _ = new string('_', 30);
+                ColorBack($"{_}JOGO__DA__FORCA{_}\n\n\n", ConsoleColor.DarkBlue);
+                Console.WriteLine("Desafie-se tentando descobrir qual é a palavra oculta em até 6 tentativas (Não considere acentos).\n");
+                ColorLine($"Tema: {temaSorteado}\n\n\n", ConsoleColor.DarkYellow);
                 ColorLine($"Tentativas Restantes: {tentativas}\n\n", ConsoleColor.DarkGreen);
                 Console.WriteLine($"| -----\n" +
                     $"|    | \n" +
@@ -66,17 +182,18 @@ namespace JogoDaForca
                     $"|   " +
                     $"{(tentativas <= 1 ? "/" : " ")} " +
                     $"{(tentativas == 0 ? "\\" : " ")} \n" +
-                    $"_      ");
-                Console.WriteLine(palavraSeled);
+                    $"_      \n");
+                Console.WriteLine($"Palavra: {palavraSeled}");
                 ColorLine($"\n\nChutes Errados: {string.Join(", ", chutes)}", ConsoleColor.Red);
 
                 char entrada = Console.ReadKey().KeyChar.ToString().ToLower()[0];
+                string palavraSemAcento = new string(RemoverAcentos(palavra.ToLower()));
 
-                if (palavra.Contains(entrada))
+                if (palavraSemAcento.Contains(entrada))
                 {
-                    for (int i = 0; i < palavra.Length; i++)
+                    for (int i = 0; i < palavraSemAcento.Length; i++)
                     {
-                        if (palavra[i] == entrada)
+                        if (palavraSemAcento[i] == entrada)
                         {
                             palavraSeled = palavraSeled.Remove(i, 1).Insert(i, entrada.ToString());
 
@@ -98,12 +215,12 @@ namespace JogoDaForca
                 Console.WriteLine(boneco);
                 ColorLine($"\nVOCÊ PERDEU, A PALAVRA É: {palavra} \n\n", ConsoleColor.DarkRed);
             }
-            else { ColorLine($"\nPARABÉNS, VOCÊ ACERTOU, A PALAVRA É: {palavra} \n\n", ConsoleColor.Green); }
+            else { ColorLine($"\nPARABÉNS, VOCÊ ACERTOU, A PALAVRA É: {palavra} \n\n", ConsoleColor.DarkGreen); }
 
 
 
             Console.ReadKey();
-
         }
+
     }
 }

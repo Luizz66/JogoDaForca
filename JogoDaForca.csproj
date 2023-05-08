@@ -9,6 +9,9 @@
     <Reference Include="Colorir">
       <HintPath>..\Bibliotecas\Colorir\obj\Debug\net5.0\Colorir.dll</HintPath>
     </Reference>
+    <Reference Include="Ferramentas">
+      <HintPath>..\Bibliotecas\Ferramentas\obj\Debug\net5.0\Ferramentas.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
