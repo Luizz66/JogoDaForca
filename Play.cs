@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using static Colorir.Color;
-using static Ferramentas.Remove;
+using static JogoDaForca.Ferramentas;
 
 namespace JogoDaForca
 {
