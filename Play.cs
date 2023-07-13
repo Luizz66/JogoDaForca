@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using static JogoDaForca.Ferramentas;
+using static Biblioteca.Ferramentas;
 
 namespace JogoDaForca
 {
-    internal class Play
+    internal static class Play
     {
         static void Main()
         {
@@ -156,14 +156,14 @@ namespace JogoDaForca
 
             int indiceList = random.Next(tema.Count);
             string palavra = tema[indiceList];
-            string palavraSeled = new string('_', palavra.Length);
+            string palavraSeled = new('_', palavra.Length);
 
             List<char> chutes = new List<char>();
             string boneco = $"| -----\n|    | \n|    O \n|   /|\\ \n|    | \n|   / \\ \n_      ";
 
             while (tentativas > 0 && palavraSeled.Contains("_"))
             {
-                string _ = new string('_', 30);
+                string _ = new('_', 30);
                 ColorBack($"{_}JOGO__DA__FORCA{_}\n\n\n", ConsoleColor.DarkBlue);
                 Console.WriteLine($"Desafie-se tentando descobrir qual é a palavra oculta em até 6 tentativas (NÃO CONSIDERE ACENTOS).\n\n");
                 ColorLine($"Tema: {temaSorteado}\n\n\n", ConsoleColor.DarkYellow);
@@ -186,7 +186,7 @@ namespace JogoDaForca
                 ColorLine($"\n\nChutes Errados: {string.Join(", ", chutes)}", ConsoleColor.Red);
 
                 char entrada = Console.ReadKey().KeyChar.ToString().ToLower()[0];
-                string palavraSemAcento = new string(RemoverAcentos(palavra.ToLower()));
+                string palavraSemAcento = new(RemoverAcentos(palavra.ToLower()));
 
                 if (palavraSemAcento.Contains(entrada))
                 {
