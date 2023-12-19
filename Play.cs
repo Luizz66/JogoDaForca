@@ -156,7 +156,7 @@ namespace JogoDaForca
 
             int indiceList = random.Next(tema.Count);
             string palavra = tema[indiceList];
-            string palavraSeled = new('_', palavra.Length);
+            string palavraSeled = new("_", palavra.Length);
 
             List<char> chutes = new List<char>();
             string boneco = $"| -----\n|    | \n|    O \n|   /|\\ \n|    | \n|   / \\ \n_      ";
