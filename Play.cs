@@ -186,7 +186,7 @@ namespace JogoDaForca
                 ColorLine($"\n\nChutes Errados: {string.Join(", ", chutes)}", ConsoleColor.Red);
 
                 char entrada = Console.ReadKey().KeyChar.ToString().ToLower()[0];
-                string palavraSemAcento = new(RemoverAcentos(palavra.ToLower()));
+                string palavraSemAcento = new(RemoveAccents(palavra.ToLower()));
 
                 if (palavraSemAcento.Contains(entrada))
                 {

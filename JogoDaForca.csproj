@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <Reference Include="Biblioteca">
-      <HintPath>..\Biblioteca\bin\Debug\net5.0\Biblioteca.dll</HintPath>
+      <HintPath>..\Biblioteca\obj\Debug\net5.0\Biblioteca.dll</HintPath>
     </Reference>
   </ItemGroup>
 
