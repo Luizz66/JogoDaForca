@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using static Biblioteca.Ferramentas;
+using System.Globalization;
+using static Tools;
 
 namespace JogoDaForca
 {
@@ -186,7 +187,7 @@ namespace JogoDaForca
                 ColorLine($"\n\nChutes Errados: {string.Join(", ", chutes)}", ConsoleColor.Red);
 
                 char entrada = Console.ReadKey().KeyChar.ToString().ToLower()[0];
-                string palavraSemAcento = new(RemoveAccents(palavra.ToLower()));
+                string palavraSemAcento = RemoveAccents(palavra.ToLower());
 
                 if (palavraSemAcento.Contains(entrada))
                 {
@@ -203,10 +204,12 @@ namespace JogoDaForca
                 }
                 else
                 {
-                    chutes.Add(entrada);
+                    if (!chutes.Contains(entrada))
+                    {
+                        chutes.Add(entrada);
+                        tentativas--;
+                    }
                     Console.Clear();
-                    tentativas--;
-                    if (chutes.Contains(entrada)) { continue; }
                 }
             }
             if (tentativas == 0)
@@ -220,6 +223,5 @@ namespace JogoDaForca
 
             Console.ReadKey();
         }
-
     }
 }
